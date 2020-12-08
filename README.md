@@ -41,6 +41,6 @@ osmapp is an open street map layer.
 ![edit site](./screenshot/5-edit-site.png)
 
 ### dashboard with map
-![dashboard map](./screenshot/6-dashboard.png)
+![dashboard map](./screenshot/6-dashboardmap.png)
 
 
