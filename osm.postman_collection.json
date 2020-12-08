@@ -1,0 +1,375 @@
+{
+	"info": {
+		"_postman_id": "d1e3f75f-5d56-4ff1-9029-c26094d145e0",
+		"name": "osm",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create changeset",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password123#",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "thiyagu.pp@gmail.com",
+							"type": "string"
+						},
+						{
+							"key": "showPassword",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<osm>\n\n <changeset lat=\"19.7955\" lon=\"88.1169\">\n </changeset>\n\n\n</osm>\n",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://master.apis.dev.openstreetmap.org/api/0.6/changeset/create.json",
+					"protocol": "https",
+					"host": [
+						"master",
+						"apis",
+						"dev",
+						"openstreetmap",
+						"org"
+					],
+					"path": [
+						"api",
+						"0.6",
+						"changeset",
+						"create.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get changeset",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "seshanth97@gmail.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "showPassword",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept-Encoding",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://master.apis.dev.openstreetmap.org/api/0.6/changeset/188603.json",
+					"protocol": "https",
+					"host": [
+						"master",
+						"apis",
+						"dev",
+						"openstreetmap",
+						"org"
+					],
+					"path": [
+						"api",
+						"0.6",
+						"changeset",
+						"188603.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add site",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password123#",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "thiyagu.pp@gmail.com",
+							"type": "string"
+						},
+						{
+							"key": "showPassword",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<osm>\n    <node changeset=\"188628\" lat=\"19.7955\" lon=\"88.1169\">\n        <tag k=\"coderName\" v=\"coderSiteName\"> </tag>\n    </node>\n</osm>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://master.apis.dev.openstreetmap.org/api/0.6/node/create.json",
+					"protocol": "https",
+					"host": [
+						"master",
+						"apis",
+						"dev",
+						"openstreetmap",
+						"org"
+					],
+					"path": [
+						"api",
+						"0.6",
+						"node",
+						"create.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get site",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "thiyagu.pp@gmail.com",
+							"type": "string"
+						},
+						{
+							"key": "showPassword",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept-Encoding",
+						"type": "text",
+						"value": "application/json",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://master.apis.dev.openstreetmap.org/api/0.6/node/4326399799.json",
+					"protocol": "https",
+					"host": [
+						"master",
+						"apis",
+						"dev",
+						"openstreetmap",
+						"org"
+					],
+					"path": [
+						"api",
+						"0.6",
+						"node",
+						"4326399799.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "edit site",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "seshanth97@gmail.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "showPassword",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<osm>\n    <node changeset=\"188603\" id=\"4326399798\" lat=\"8.7955\" lon=\"78.1169\" version=\"1\">\n        <tag k=\"sitetName\" v=\"testSiteNameModified\"> </tag>\n    </node>\n</osm>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://master.apis.dev.openstreetmap.org/api/0.6/node/4326399798",
+					"protocol": "https",
+					"host": [
+						"master",
+						"apis",
+						"dev",
+						"openstreetmap",
+						"org"
+					],
+					"path": [
+						"api",
+						"0.6",
+						"node",
+						"4326399798"
+					]
+				},
+				"description": "This will return new version."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/projectinfo/add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"projectName\": \"test\",\r\n    \"description\"  :\"desc\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/projectinfo/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"projectinfo",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/projectinfo/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/projectinfo/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"projectinfo",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/siteinfo/add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"projectName\": \"test\",\r\n    \"siteName\"  :\"siteTest\",\r\n    \"latitude\"  :\"73.8567\",\r\n    \"longitude\"  :\"18.5204\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/siteinfo/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"siteinfo",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/siteinfo/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/siteinfo/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"siteinfo",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

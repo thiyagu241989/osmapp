@@ -1,0 +1,67 @@
+<div class="wrapper">
+
+    <app-landing-header></app-landing-header>
+    <div class="content-wrapper" style="margin-left: 1px;">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Project List</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">project list</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- {{ userData | json }} -->
+        <!-- {{usersAr | json}} -->
+
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-8 offset-2">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Projects</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 10px">#</th>
+                                            <th>Project Name</th>
+                                            <th>Description</th>
+                                            <th>Created On</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let rowData of projectList | keyvalue; let i = index;">
+                                            <td>{{ i + 1 }}</td>
+                                            <td>{{ rowData.value.projectName }}</td>
+                                            <td>{{ rowData.value.description }}</td>
+                                            <td>{{ rowData.value.createdAt | date:'dd-MMM-yy h:mm a' }}</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+
+    </div>
+
+</div>

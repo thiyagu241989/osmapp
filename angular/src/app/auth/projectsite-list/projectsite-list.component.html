@@ -1,0 +1,78 @@
+<div class="wrapper">
+
+    <app-landing-header></app-landing-header>
+
+    <div class="content-wrapper" style="margin-left: 1px;">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Site List</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">site list</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- {{ userData | json }} -->
+        <!-- {{usersAr | json}} -->
+
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-8 offset-2">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Sites</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 10px">#</th>
+                                            <th>Site Name</th>
+                                            <th>Latitude</th>
+                                            <th>Longitude</th>
+                                            <th>Project Name</th>
+                                            <th>Created On</th>
+                                            <th style="width: 40px">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let rowData of siteList | keyvalue; let i = index;">
+                                            <td>{{ i + 1 }}</td>
+                                            <td>{{ rowData.value.siteName }}</td>
+                                            <td>{{ rowData.value.latitude }}</td>
+                                            <td>{{ rowData.value.longitude }}</td>
+                                            <td><span class="badge badge-warning">{{ rowData.value.projectName }}</span></td>
+                                            <td>{{ rowData.value.createdAt | date:'dd-MMM-yy h:mm a' }}</td>
+                                            <td>
+                                                <a href="javascript:void(0);" [routerLink]="['edit', rowData.value._id]" tooltip="view" theme="dark" placement="left" class="btn btn-xs btn-info">
+                                                    <i class="fa fa-pencil"></i> Edit </a>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+
+    </div>
+
+</div>

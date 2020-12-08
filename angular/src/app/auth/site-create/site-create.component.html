@@ -1,0 +1,177 @@
+<div class="wrapper">
+
+    <app-landing-header></app-landing-header>
+
+    <div class="content-wrapper" style="margin-left: 1px;">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Dashboard</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+
+
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="col-1">
+                                <button (click)="open(mymodal)" class="btn btn-success"><i class="fa fa-plus"></i></button>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <select class="form-control" #searchProjectName (change)='onCurrentlySearch(searchProjectName)'>
+                                        <option  >Select</option>
+                                        <option *ngFor="let item of projectList" [ngValue]="item.projectName">
+                                           {{item.projectName}}
+                                    </option>
+                                </select>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-12">
+                        <div class="row">
+
+                            <div class="col-4">
+
+                                <div class="card card-outline card-primary">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Create site</h3>
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <!-- form start -->
+                                    <form [formGroup]="siteForm" (ngSubmit)="onSubmitSite()">
+                                        <div class="card-body">
+
+                                            <div class="form-group">
+                                                <label>Project Name</label>
+                                                <select class="form-control" formControlName="projectName" #projectName [(ngModel)]="currentSelectedOption" (change)='onCurrentlySelected(projectName)' [ngClass]="{ 'is-invalid': submitted && f.projectName.errors || f.projectName.invalid && (f.projectName.dirty || f.projectName.touched) }">
+                                                    <option [ngValue]="null" >Select</option>
+                                                    <option *ngFor="let item of projectList | keyvalue" [ngValue]="item.value.projectName">
+                                                        {{item.value.projectName}}
+                                                    </option>
+                                                </select>
+
+                                                <div *ngIf="submitted && f.projectName.errors || f.projectName.invalid && (f.projectName.dirty || f.projectName.touched)" class="invalid-feedback">
+                                                    <div *ngIf="f.projectName.errors.required">Project is required</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Site Name</label>
+                                                <input type="text" formControlName="siteName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.siteName.errors || f.siteName.invalid && (f.siteName.dirty || f.siteName.touched)}" />
+
+                                                <div *ngIf="submitted && f.siteName.errors || f.siteName.invalid && (f.siteName.dirty || f.siteName.touched)" class="invalid-feedback">
+                                                    <div *ngIf="f.siteName.errors.required">Site Name is required</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label> latitude </label>
+                                                <input type="text" formControlName="latitude" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.latitude.errors || f.latitude.invalid && (f.latitude.dirty || f.latitude.touched)}" />
+
+                                                <div *ngIf="submitted && f.latitude.errors || f.latitude.invalid && (f.latitude.dirty || f.latitude.touched)" class="invalid-feedback">
+                                                    <div *ngIf="f.latitude.errors.required">Latitude is required</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label> longitude </label>
+                                                <input type="text" formControlName="longitude" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.longitude.errors || f.longitude.invalid && (f.longitude.dirty || f.longitude.touched)}" />
+
+                                                <div *ngIf="submitted && f.longitude.errors || f.longitude.invalid && (f.longitude.dirty || f.longitude.touched)" class="invalid-feedback">
+                                                    <div *ngIf="f.longitude.errors.required">Longitude is required</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.card-body -->
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <!-- <div id="osm-map" style="height:300px;"></div> -->
+                                <div id="map" class="map" style="height:300px;"></div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+
+                </div>
+
+            </div>
+            <!-- /.container-fluid -->
+
+
+
+
+            <ng-template #mymodal let-modal>
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Create Project</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+
+                <div class="modal-body">
+                    <form [formGroup]="projectForm" (ngSubmit)="onSubmitProject()">
+                        <div class="card-body">
+
+                            <div class="form-group">
+                                <label>Project Name</label>
+                                <input type="text" formControlName="projectName" #projectName class="form-control" [ngClass]="{ 'is-invalid': submitted2 && s.projectName.errors || s.projectName.invalid && (s.projectName.dirty || s.projectName.touched)}" />
+
+                                <div *ngIf="submitted2 && s.projectName.errors || s.projectName.invalid && (s.projectName.dirty || s.projectName.touched)" class="invalid-feedback">
+                                    <div *ngIf="s.projectName.errors.required">Site Name is required</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label> Description </label>
+                                <textarea rows="4" cols="4" formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted2 && s.description.errors || s.description.invalid && (s.description.dirty || s.description.touched)}"></textarea>
+
+                                <div *ngIf="submitted2 && s.description.errors || s.description.invalid && (s.description.dirty || s.description.touched)" class="invalid-feedback">
+                                    <div *ngIf="s.description.errors.required">Description is required</div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </ng-template>
+
+        </section>
+
+    </div>
+    <!-- /.content-wrapper -->
+</div>
