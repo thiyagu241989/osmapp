@@ -1,0 +1,3 @@
+<button (click)="toggle()">Toggle</button>
+<input [(ngModel)]="'title'" />
+<app-hello *ngIf="show" titleAliasName="{{title}}"></app-hello>

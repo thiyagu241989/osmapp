@@ -14,6 +14,8 @@ import { SiteCreateComponent } from './site-create/site-create.component';
 import { SiteEditComponent } from './site-edit/site-edit.component';
 import { ProjectsiteListComponent } from './projectsite-list/projectsite-list.component';
 import { ProjectListComponent } from './project-list/project-list.component';
+import { HelloComponent } from './hello/hello.component';
+import { AptestComponent } from './aptest/aptest.component';
 
 const routes: Routes = [
 
@@ -23,6 +25,8 @@ const routes: Routes = [
   { path: 'project-list', component: ProjectListComponent, data: { title: 'project-list' } },
   { path: 'site-list', component: ProjectsiteListComponent, data: { title: 'site-list' } },
   { path: 'site-list/edit/:id', component: SiteEditComponent, data: { title: 'site-edit' } },
+  { path: 'hello', component: HelloComponent, data: { title: 'hello' } },
+  { path: 'test', component: AptestComponent, data: { title: 'test' } },
   { path: '', redirectTo: '/auth/home', pathMatch: 'full' },
   
   
@@ -35,7 +39,9 @@ const routes: Routes = [
     SiteCreateComponent,
     SiteEditComponent,
     ProjectsiteListComponent,
-    ProjectListComponent
+    ProjectListComponent,
+    HelloComponent,
+    AptestComponent
   ],
   imports: [    
     CommonModule,
